@@ -11,10 +11,14 @@ import UIKit
 class DetailedViewController: UIViewController {
 
     @IBOutlet weak var toDoField: UILabel!
+    var toDoItem: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let toDoItem = toDoItem {
+            toDoField.text = toDoItem
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -27,8 +31,15 @@ class DetailedViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         }
         
+        
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindFromSave"{
+            toDoItem = toDoField.text
+        }
+    }
 
 
 }
