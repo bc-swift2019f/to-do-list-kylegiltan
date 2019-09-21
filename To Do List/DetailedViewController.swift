@@ -10,7 +10,8 @@ import UIKit
 
 class DetailedViewController: UIViewController {
 
-    @IBOutlet weak var toDoField: UILabel!
+    
+    @IBOutlet weak var toDoField: UITextField!
     var toDoItem: String?
 
     
