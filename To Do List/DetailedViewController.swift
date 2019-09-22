@@ -12,6 +12,7 @@ class DetailedViewController: UIViewController {
 
     
     @IBOutlet weak var toDoField: UITextField!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     var toDoItem: String?
 
     
@@ -20,7 +21,28 @@ class DetailedViewController: UIViewController {
         if let toDoItem = toDoItem {
             toDoField.text = toDoItem
         }
+        enableDisableSaveButton()
+        toDoField.becomeFirstResponder()
         // Do any additional setup after loading the view.
+    }
+    
+    func enableDisableSaveButton(){
+        if let toDoFieldCount = toDoField.text?.count, toDoFieldCount > 0 {
+            saveBarButton.isEnabled = true
+        }
+        else{
+            saveBarButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func toDoFieldChanged(_ sender: UITextField) {
+//        if toDoField.text!.count > 0{
+//            saveBarButton.isEnabled = true
+//        }
+//        else{
+//            saveBarButton.isEnabled = false
+//        }
+        enableDisableSaveButton()
     }
     
     @IBAction func cancelledPressed(_ sender: UIBarButtonItem) {
